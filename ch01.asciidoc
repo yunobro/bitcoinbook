@@ -4,48 +4,134 @@
 
 === What Is Bitcoin?
 
-((("bitcoin", "defined", id="GSdefine01")))Bitcoin is a collection of concepts and technologies that form the basis of a digital money ecosystem. Units of currency called bitcoin are used to store and transmit value among participants in the bitcoin network. Bitcoin users communicate with each other using the bitcoin protocol primarily via the internet, although other transport networks can also be used. The bitcoin protocol stack, available as open source software, can be run on a wide range of computing devices, including laptops and smartphones, making the technology easily accessible.
+> ((("bitcoin", "defined", id="GSdefine01"))) ==Bitcoin== is a collection of concepts and technologies that form the basis of a digital money ecosystem. Units of currency called bitcoin are used to store and transmit value among participants in the bitcoin network. Bitcoin users communicate with each other using the bitcoin protocol primarily via the internet, although other transport networks can also be used. The bitcoin protocol stack, available as open source software, can be run on a wide range of computing devices, including laptops and smartphones, making the technology easily accessible.
 
-Users can transfer bitcoin over the network to do just about anything that can be done with conventional currencies, including buying and selling goods, sending money to people or organizations, or extending credit. Bitcoin can be purchased, sold, and exchanged for other currencies at specialized currency exchanges. Bitcoin in a sense is the perfect form of money for the internet because it is fast, secure, and borderless.
 
-Unlike traditional currencies, bitcoin is entirely virtual. There are no physical coins or even digital coins per se. The coins are implied in transactions that transfer value from sender to recipient. Users of bitcoin own keys that allow them to prove ownership of bitcoin in the bitcoin network. With these keys, they can sign transactions to unlock the value and spend it by transferring it to a new owner. Keys are often stored in a digital wallet on each user’s computer or smartphone. Possession of the key that can sign a transaction is the only prerequisite to spending bitcoin, putting the control entirely in the hands of each user.
 
-Bitcoin is a distributed, peer-to-peer system. As such, there is no "central" server or point of control. Bitcoin are created through a process called "mining," which involves competing to find solutions to a mathematical problem while processing bitcoin transactions. Any participant in the bitcoin network (i.e., anyone using a device running the full bitcoin protocol stack) may operate as a miner, using their computer's processing power to verify and record transactions. Every 10 minutes, on average, a bitcoin miner can validate the transactions of the past 10 minutes and is rewarded with brand new bitcoin. Essentially, bitcoin mining decentralizes the currency-issuance and clearing functions of a central bank and replaces the need for any central bank.
+비트코인이란 디지털 화폐 생태계의 근간을 이루고 있는 기술과 개념의 집합체다. 비트코인이라 불리는 통화 단위들은 비트코인 네트워크 안의 참가자들 사이에서 value를 저장하고 전송하는데 쓰인다. 유저들은 주로 인터넷을 통해 비트 코인 프로토콜을 사용하여 서로 통신하지만 다른 전송 네트워크도 사용할 수 있다. 비트코인 프로토콜 스택은 오픈소스로 이용가능하며, 노트북과 스마트폰을 포함한 컴퓨팅 장치의 넓은 범위에서 작동된다. 이로써 비트코인이란 기술에 누구든 접근하기 쉽게 만든다.
 
-The bitcoin protocol includes built-in algorithms that regulate the mining function across the network. The difficulty of the processing task that miners must perform is adjusted dynamically so that, on average, someone succeeds every 10 minutes regardless of how many miners (and how much processing) are competing at any moment. The protocol also halves the rate at which new bitcoin are created every 4 years, and limits the total number of bitcoin that will be created to a fixed total just below 21 million coins. The result is that the number of bitcoin in circulation closely follows an easily predictable curve that approaches 21 million by the year 2140. Due to bitcoin's diminishing rate of issuance, over the long term, the bitcoin currency is deflationary. Furthermore, bitcoin cannot be inflated by "printing" new money above and beyond the expected issuance rate.
 
-Behind the scenes, bitcoin is also the name of the protocol, a peer-to-peer network, and a distributed computing innovation. The bitcoin currency is really only the first application of this invention. Bitcoin represents the culmination of decades of research in cryptography and distributed systems and includes four key innovations brought together in a unique and powerful combination. Bitcoin consists of:
 
-* A decentralized peer-to-peer network (the bitcoin protocol)
-* A public transaction ledger (the blockchain)
-* ((("mining and consensus", "consensus rules", "satisfying")))A set of rules for independent transaction validation and currency issuance (consensus rules)
-* A mechanism for reaching global decentralized consensus on the valid blockchain (Proof-of-Work algorithm)
+> Users can transfer bitcoin over the network to do just about anything that can be done with conventional currencies, including buying and selling goods, sending money to people or organizations, or extending credit. Bitcoin can be purchased, sold, and exchanged for other currencies at specialized currency exchanges. Bitcoin in a sense is the perfect form of money for the internet because it is fast, secure, and borderless.
 
-As a developer, I see bitcoin as akin to the internet of money, a network for propagating value and securing the ownership of digital assets via distributed computation. There's a lot more to bitcoin than first meets the eye.
 
-In this chapter we'll get started by explaining some of the main concepts and terms, getting the necessary software, and using bitcoin for simple transactions. In the following chapters, we'll start unwrapping the layers of technology that make bitcoin possible and examine the inner workings of the bitcoin network and protocol.((("", startref="GSdefine01")))
+
+유저들은 네트워크를 통해 비트코인을 전송함으로써 물건을 사고 팔고, 사람들이나 기관에게 돈을 보내고 따위의 보편적인 화폐 행동의 어떤 것이든 할 수 있다. 비트코인은 구매하고, 팔고, 심지어 다른 화폐와 교환할 수도 있다.  빠르고 안전하고 국경이 없기에 어떤 의미에서 비트코인은 인터넷을 위한 돈의 가장 완벽한 형태다.
+
+
+
+>  Unlike traditional currencies, bitcoin is entirely virtual. There are no physical coins or even digital coins per se. The coins ==are implied== in transactions that transfer value from sender to recipient. Users of bitcoin own keys that allow them to prove ownership of bitcoin in the bitcoin network. With these keys, they can sign transactions to unlock the value and spend it by transferring it to a new owner. Keys are often stored in a digital wallet on each user’s computer or smartphone. Possession of the key that can sign a transaction is the only prerequisite to spending bitcoin, putting the control entirely in the hands of each user.
+
+
+
+전통적인 화폐와는 다르게 비트코인은 완전히 허상이다. 코인뿐만 아니라 디지털 지갑까지 물리적으로 존재하지 않는다. 코인들은 '발신인에서부터 수신인까지 value를 전송하는 거래'로 함축될 수 있다. 유저들은 네트워크 내에서 그들이 비트코인의 소유권을 가지고 있음을 증명하는 키들을 소유한다. 이 키들을 가지고, value를 unlock 하거나 그것을 다른 사람에게 전송함으로써 소비하기 위해 트랜잭션에 sign할 수 있다. 키들은 종종 각 유저의 컴퓨터나 스마트폰에 있는 디지털 지갑에 저장되곤한다. 트렌젝션에 sign을 가능케하는 키의 소유는 비트코인을 소비하고, 다른 유저에게 컨트롤을 완전히 넘겨주기 위한 유일한 선행 조건이다.
+
+
+
+> Bitcoin is a distributed, peer-to-peer system. As such, there is no "central" server or point of control. Bitcoin are created through a process called "mining," which involves competing to find solutions to a mathematical problem while processing bitcoin transactions. Any participant in the bitcoin network (i.e., anyone using a device running the full bitcoin protocol stack) may operate as a miner, using their computer's processing power to verify and record transactions. Every 10 minutes, on average, a bitcoin miner can validate the transactions of the past 10 minutes and is rewarded with brand new bitcoin. Essentially, bitcoin mining decentralizes the currency-issuance and clearing functions of a central bank and replaces the need for any central bank.
+
+
+
+비트코인은 분산 P2P 시스템이다. '중앙' 서버나 관리자가 없다는 뜻이다. 비트코인은 트렌젝션을 처리하는 동안 수학 문제의 해답을 찾는 과정에 참가하는 '마이닝'이란 프로세스를 통해 만들어진다. 네트워크 내의 어떤 참가자든 각자가 가진 컴퓨터의 파워를 이용해 트랜젝션을 검증하고 기록함으로써 마이닝이 가능하다. 평균적으로 매 십분마다 채굴자들은 지난 10분에 대한 트렌젝션을 검증할 수 있고 새로운 비트 코인을 보상으로 받을 수 있다. 특히, 비트코인 채굴은 화폐에 대한 검증을 탈중앙화 - 중앙은행의 기능을 없애고 그 자리를 대체한다.
+
+
+
+> The bitcoin protocol includes built-in algorithms that regulate the mining function across the network. The difficulty of the processing task that miners must perform is adjusted dynamically so that, on average, someone succeeds every 10 minutes regardless of how many miners (and how much processing) are competing at any moment. The protocol also halves the rate at which new bitcoin are created every 4 years, and limits the total number of bitcoin that will be created to a fixed total just below 21 million coins. The result is that the number of bitcoin in circulation closely follows an easily predictable curve that approaches 21 million by the year 2140. Due to bitcoin's diminishing rate of issuance, over the long term, the bitcoin currency is deflationary. Furthermore, bitcoin cannot be inflated by "printing" new money above and beyond the expected issuance rate.
+
+
+
+비트코인 프로토콜은  네트워크 상의 채굴 함수를 통제할 수 있는 자체 알고리즘을 가지고 있다. 채굴자가 수행해야하는 처리 작업의 난이도는 동적으로 조정되어 어느 순간에 얼마나 많은 채굴 자 (및 처리량)가 경쟁하고 있는지에 관계없이 평균적으로 누군가가 10 분마다 성공하도록 조정된다. 프로토콜은 4년마다 새 비트코인이 생성되는 속도를 제한하고 생산될 총 비트코인의 수를 2천1백만 개수 이하로 제한한다. 이로써 비트코인 수는 2140년에 2천1백만개에 가까워질 것이라 예측된다. 비트코인 발행의 감소되는 속도덕분에 장기적으로 비트코인은 화폐의 가치가 올라간다. 게다가, 비트코인은 예상 발행률 이상으로 새로운 돈을 찍어내는것에 의해 인플레이션되지 않는다.
+
+
+
+> Behind the scenes, bitcoin is also the name of the protocol, a peer-to-peer network, and a distributed computing innovation. The bitcoin currency is really only the first application of this invention. Bitcoin represents the culmination of decades of research in cryptography and distributed systems and includes four key innovations brought together in a unique and powerful combination. Bitcoin consists of:
+>
+> * A decentralized peer-to-peer network (the bitcoin protocol)
+> * A public transaction ledger (the blockchain)
+> * ((("mining and consensus", "consensus rules", "satisfying")))A set of rules for independent transaction validation and currency issuance (consensus rules)
+> * A mechanism for reaching global decentralized consensus on the valid blockchain (Proof-of-Work algorithm)
+
+
+
+다른면으로는, 비트코인은 프로토콜, P2P 네트워크, 분산 컴퓨팅의 혁신을 대표한다. 비트코인 화폐는 이 발명의 첫 적용 결과물이다. 비트코인은 암호학과 분산시스템 연구의 수십년의 산출물이고 4가지 혁진적인 점을 가진다.
+
+- 탈중앙화된 P2P 네트워크 = 비트코인 프로토콜
+- 공개 트랜젝션의 총기록부 = 블록체인
+- 독립적인 트렌젝션의 인증과 화폐 발행률을 위한 규칙들 = Consensus rules
+- 유효한 블록 체인에 대한 글로벌 분산 합의에 도달하기위한 메커니즘 = Proof of Work 알고리즘
+
+
+
+> As a developer, I see bitcoin as akin to the internet of money, a network for propagating value and securing the ownership of digital assets via distributed computation. There's a lot more to bitcoin than first meets the eye.
+
+
+
+개발자의 입장에서, 나는 비트코인을 인터넷 머니같은거라 생각했다. 그러나 그것보다 더 많은 게 있었다.
+
+
+
+> In this chapter we'll get started by explaining some of the main concepts and terms, getting the necessary software, and using bitcoin for simple transactions. In the following chapters, we'll start unwrapping the layers of technology that make bitcoin possible and examine the inner workings of the bitcoin network and protocol.((("", startref="GSdefine01")))
+
+
+
+이 챕터에서 우리는 몇몇의 주요 개념과 용어 설명, 필수적 소프트웨어 설치, 간단한 트렌젝션을 위해 비트코인을 사용하며 시작하겠다. 다음 챕터에서는, 비트코인을 가능하게하는 기술들을 파헤쳐보고 비트코인 네트워크와 프로토콜의 내부 작동을 탐색해보겠다.
+
+
 
 [role="pagebreak-before less_space"]
 .Digital Currencies Before Bitcoin
+
 ****
 
-((("digital currencies", "prior to bitcoin")))The emergence of viable digital money is closely linked to developments in cryptography. This is not surprising when one considers the fundamental challenges involved with using bits to represent value that can be exchanged for goods and services. Three basic questions for anyone accepting digital money are:
+>  ((("digital currencies", "prior to bitcoin")))The emergence of viable digital money is closely linked to developments in cryptography. This is not surprising when one considers the fundamental challenges involved with using bits to represent value that can be exchanged for goods and services. Three basic questions for anyone accepting digital money are:
+>
+> 1.     Can I trust that the money is authentic and not counterfeit?
+> 2.     Can I trust that the digital money can only be spent once (known as the “double-spend” problem)?
+> 3.     Can I be sure that no one else can claim this money belongs to them and not me?
 
-1.     Can I trust that the money is authentic and not counterfeit?
-2.     Can I trust that the digital money can only be spent once (known as the “double-spend” problem)?
-3.     Can I be sure that no one else can claim this money belongs to them and not me?
 
-Issuers of paper money are constantly battling the counterfeiting problem by using increasingly sophisticated papers and printing technology. Physical money addresses the double-spend issue easily because the same paper note cannot be in two places at once. Of course, conventional money is also often stored and transmitted digitally. In these cases, the counterfeiting and double-spend issues are handled by clearing all electronic transactions through central authorities that have a global view of the currency in circulation. For digital money, which cannot take advantage of esoteric inks or holographic strips, cryptography provides the basis for trusting the legitimacy of a user’s claim to value. Specifically, cryptographic digital signatures enable a user to sign a digital asset or transaction proving the ownership of that asset. With the appropriate architecture, digital signatures also can be used to address the double-spend issue.
 
-When cryptography started becoming more broadly available and understood in the late 1980s, many researchers began trying to use cryptography to build digital currencies. These early digital currency projects issued digital money, usually backed by a national currency or precious metal such as gold.
+다양한 디지털 머니의 출현은 암호학의 발전과 밀접하게 관련되어있다. 재화와 서비스와 교환될수있는 value 를 대표하기위해 비트를 이용한 근본적인 문제라 생각하면 이건 놀랍지 않다. 누구나 디지털 머니를 받아들일 수 있게 되는 세가지 기초적 질문이 있다.
 
-((("decentralized systems", "vs. centralized", secondary-sortas="centralized")))Although these earlier digital currencies worked, they were centralized and, as a result, were easy to attack by governments and hackers. Early digital currencies used a central clearinghouse to settle all transactions at regular intervals, just like a traditional banking system. Unfortunately, in most cases, these nascent digital currencies were targeted by worried governments and eventually litigated out of existence. Some failed in spectacular crashes when the parent company liquidated abruptly. To be robust against intervention by antagonists, whether legitimate governments or criminal elements, a _decentralized_ digital currency was needed to avoid a single point of attack. Bitcoin is such a system, decentralized by design, and free of any central authority or point of control that can be attacked or corrupted.
+1. 돈이 진짜인지 신뢰할 수 있는가?
+2. 디지털 머니가 한번만 전송되었다고 신뢰할 수 있는가?
+3. 이 돈이 내가 아니라 다른사람에게 속해있다고 그 누구도 주장하지 않는가?
+
+
+
+>  Issuers of paper money are constantly battling the counterfeiting problem by using increasingly sophisticated papers and printing technology. Physical money addresses the double-spend issue easily because the same paper note cannot be in two places at once. Of course, conventional money is also often stored and transmitted digitally. In these cases, the counterfeiting and double-spend issues are handled by clearing all electronic transactions through central authorities that have a global view of the currency in circulation. For digital money, which cannot take advantage of esoteric inks or holographic strips, cryptography provides the basis for trusting the legitimacy of a user’s claim to value. Specifically, cryptographic digital signatures enable a user to sign a digital asset or transaction proving the ownership of that asset. With the appropriate architecture, digital signatures also can be used to address the double-spend issue.
+
+
+
+종이 화폐의 발행자들은 발전하는 정교한 종이와 프린팅 기술을 이용해 복제문제에 끊임없이 맞서고있다. 물리적 돈은 같은 화폐가 동시에 두 자리에 쓰일 수 없기에 이중으로 쓰이는 문제를 쉽게 해결한다. 물론, 전통적 돈은 디지털적으로 저장되고 전송된다. 이 경우에는, 중앙의 권위를 통해 모든 전자 트렌젝션을 삭제하는 방법으로 복제와 이중소비 이슈를 통제가능하다. 홀로그램이라든지 신기한 잉크의 이점을 사용할 수 없는 디지털 머니를 위해, 암호학은 value에게 유저의 주장의 합법성을 신뢰할 수 있는 근간을 제공한다.  특히, 암호적인 디지털 사인은 유저가 디지털 자산이나 자산의 소유권을 제공하는 트렌젝션에 사인하는 것을 허용한다. 적절한 구조로, 디지털 사인은 중복 사용 이슈를 해결하는데 쓰일 수 있다.
+
+
+
+>  When cryptography started becoming more broadly available and understood in the late 1980s, many researchers began trying to use cryptography to build digital currencies. These early digital currency projects issued digital money, usually backed by a national currency or precious metal such as gold.
+
+
+
+암호학이 세계적으로 이용가능하고 이해되기 시작할 1980년대 후반에, 많은 연구자들은 디지털 화폐를 만들기위해 암호학을 사용하기 시작했다. 이 이른 디지털 머니를 발행하기 위한 프로젝트는 보통 국가의 화폐나 금같은 귀금속에 의해 뒷받침되었다.
+
+
+
+>  ((("decentralized systems", "vs. centralized", secondary-sortas="centralized")))Although these earlier digital currencies worked, they were centralized and, as a result, were easy to attack by governments and hackers. Early digital currencies used a central clearinghouse to settle all transactions at regular intervals, just like a traditional banking system. Unfortunately, in most cases, these nascent digital currencies were targeted by worried governments and eventually litigated out of existence. Some failed in spectacular crashes when the parent company liquidated abruptly. To be robust against intervention by antagonists, whether legitimate governments or criminal elements, a _decentralized_ digital currency was needed to avoid a single point of attack. Bitcoin is such a system, decentralized by design, and free of any central authority or point of control that can be attacked or corrupted.
+
+
+
+비록 이 초기의 디지털 화폐는 작동했지만, 그들은 중앙화되어있기 때문에 정부와 해커에게 공격받기 쉬웠다. 초기의 디지털 화폐는 보통의 전통적 은행 시스템같이 모든 트렌젝션을 일정 간격으로 실행시키기 위해 중앙화된 정보센터를 이용했다. 불행히도, 대부분 이 초기의 디지털 화폐들은 정부의 우려에 의해 타겟팅되었고 결국 존재를 법정에서 다투게되었다. 몇몇은 회사가 급작스럽게 값을 치루는 과정에서 망해버렸다. 경쟁상대에 의한 참견에 완강히 대응하기 위해서, 어떤 합법적 정부나 범죄의 요소, 탈중앙화된 디지털화폐는 어떠한 공격이라도 피할수 있어야했다. 비트코인은 탈중앙화된 설계에 의한 시스템이고, 어떠한 공격받거나 부패된 중앙의 권위나 제어에서도 자유롭다.
+
+
 
 ****
 
 === History of Bitcoin
 
 ((("Nakamoto, Satoshi")))((("distributed computing")))((("bitcoin", "history of")))Bitcoin was invented in 2008 with the publication of a paper titled "Bitcoin: A Peer-to-Peer Electronic Cash System,"footnote:["Bitcoin: A Peer-to-Peer Electronic Cash System," Satoshi Nakamoto (https://bitcoin.org/bitcoin.pdf).] written under the alias of Satoshi Nakamoto (see <<satoshi_whitepaper>>). Nakamoto combined several prior inventions such as b-money and HashCash to create a completely decentralized electronic cash system that does not rely on a central authority for currency issuance or settlement and validation of transactions. ((("Proof-of-Work algorithm")))((("decentralized systems", "consensus in")))((("mining and consensus", "Proof-of-Work algorithm")))The key innovation was to use a distributed computation system (called a "Proof-of-Work" algorithm) to conduct a global "election" every 10 minutes, allowing the decentralized network to arrive at _consensus_ about the state of transactions. ((("double-spend problem")))((("spending bitcoin", "double-spend problem")))This elegantly solves the issue of double-spend where a single currency unit can be spent twice. Previously, the double-spend problem was a weakness of digital currency and was addressed by clearing all transactions through a central clearinghouse.
+
+비트코인은 [Bitcoin: A Peer-to-Peer Electronic Cash System, Satoshi Nakamoto]이라는 발행물과 함께 2008년에 발명되었다. 나카모토는 b-money나 hashcash 같은 여러 선행된 발명품들을 조합했다. 그로써 화폐 발행이나 거래의 인증을 위해 중앙의 권위에 의존하지 않는 완전히 탈중앙화된 전자 캐쉬 시스템이 만들어졌다. 키의 혁신은 매 10분마다 세계의 'election'를 수행하기 위해 분산 컴퓨팅 시스템을 이용했다.  
+
+
 
 The bitcoin network started in 2009, based on a reference implementation published by Nakamoto and since revised by many other programmers. The implementation of the Proof-of-Work algorithm (mining) that provides security and resilience for bitcoin has increased in power exponentially, and now exceeds the combined processing power of the world's top supercomputers. Bitcoin's total market value has at times exceeded $135 billion US dollars, depending on the bitcoin-to-dollar exchange rate. The largest transaction processed so far by the network was $400 million US dollars, transmitted instantly and processed for a fee of $1.
 
